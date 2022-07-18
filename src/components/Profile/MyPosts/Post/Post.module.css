@@ -5,3 +5,13 @@
     border-radius: 50%;
     overflow: hidden;
 }
+
+.item p {
+    margin: 0;
+    padding: 0 0 5px;
+}
+
+.item span {
+    display: inline-block;
+    margin-bottom: 5px;
+}

@@ -5,7 +5,7 @@ import s from './Profile.module.css';
 const Profile = () => {
     return (
         <main className={s.content}>
-            <div>
+            <div className={s.main_img}>
                 <img src="https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg" />
             </div>
             <div>
