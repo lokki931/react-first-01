@@ -1,13 +1,16 @@
-.wrapper{
+.wrapper {
   display: grid;
   grid-template-rows: 70px 1fr;
   grid-template-columns: 2fr 10fr;
-  grid-template-areas: 
+  grid-template-areas:
     "h h"
     "n c";
-    max-width: 1200px;
-    margin: 0 auto;
+  max-width: 1200px;
+  margin: 0 auto;
   /* grid-gap: 10px; */
 }
 
-
+.content {
+  grid-area: c;
+  padding: 10px;
+}
