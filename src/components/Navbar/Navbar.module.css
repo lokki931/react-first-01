@@ -13,14 +13,14 @@
   text-decoration: none;
 }
 
-.nav ul li.item a:hover {
+li.item a:hover {
   color: aqua;
 }
 
-.nav ul li.item a {
+li.item a {
   color: white;
 }
 
-.nav ul li.item.active a {
+li.item a.active {
   color: gold;
 }
