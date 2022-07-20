@@ -1,0 +1,20 @@
+.dialogs_wrap {
+    display: flex;
+}
+
+.list {
+    margin: 0;
+    padding: 0;
+}
+
+.item {
+    list-style-type: none;
+}
+
+.item.active {
+    background-color: green;
+}
+
+.dialogs_message {
+    margin-left: 25px;
+}
