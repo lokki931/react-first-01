@@ -5,7 +5,7 @@ const ProfileInfo = () => {
     return (
         <>
             <div className={s.main_img}>
-                <img src="https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg" />
+                <img src="https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg" alt='main img' />
             </div>
             <div>
                 ava +description
