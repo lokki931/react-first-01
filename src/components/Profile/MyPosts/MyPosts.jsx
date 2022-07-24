@@ -30,6 +30,9 @@ const MyPosts = () => {
             title: 'Haha'
         }
     ];
+
+    let PostsElement = postsData
+        .map(post => <Post title={post.title} like={post.like} />);
     return (
         <div>
             My post
@@ -38,11 +41,7 @@ const MyPosts = () => {
                 <button>add post</button>
             </div>
             <div className={s.posts}>
-                <Post title={postsData[0].title} like={postsData[0].like} />
-                <Post title={postsData[1].title} like={postsData[1].like} />
-                <Post title={postsData[2].title} like={postsData[2].like} />
-                <Post title={postsData[3].title} like={postsData[3].like} />
-                <Post title={postsData[4].title} like={postsData[4].like} />
+                {PostsElement}
             </div>
         </div>
     );
