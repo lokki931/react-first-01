@@ -1,74 +1,19 @@
 import { React } from 'react';
-import { NavLink } from 'react-router-dom';
 import s from './Dialogs.module.css';
+import DialogItem from './DialogItem/DialogItem';
+import Message from './Message/Message';
 
-const DialogItem = (props) => {
-    return (
-        <li className={s.item}>
-            <NavLink to={props.userId}>{props.name}</NavLink>
-        </li>
-    );
-}
-
-const Message = (props) => {
-    return (
-        <div className={s.message}>{props.message}</div>
-    );
-}
 // UI(User Interface) -> react
 //BLL(Business Logic Layer)(DATA) -> redux
-const Dialogs = () => {
+const Dialogs = (props) => {
 
-    let dialogsData = [
-        {
-            id: 1,
-            name: 'Taras'
-        },
-        {
-            id: 2,
-            name: 'Dima'
-        },
-        {
-            id: 3,
-            name: 'Olga'
-        },
-        {
-            id: 4,
-            name: 'Yulia'
-        },
-        {
-            id: 5,
-            name: 'Anton'
-        }
-    ];
-    let messagesData = [
-        {
-            id: 1,
-            message: 'Hi'
-        },
-        {
-            id: 2,
-            message: 'How are you?'
-        },
-        {
-            id: 3,
-            message: 'Hi Nick'
-        },
-        {
-            id: 4,
-            message: 'Oh'
-        },
-        {
-            id: 5,
-            message: 'Haha'
-        }
-    ];
 
-    let DialogsElement = dialogsData
-        .map(dialog => <DialogItem name={dialog.name} userId={dialog.id} />);
 
-    let MessagesElement = messagesData
-        .map(message => <Message message={message.message} />);
+    let DialogsElement = props.state.dialogs
+        .map(dialog => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id} />);
+
+    let MessagesElement = props.state.messages
+        .map(message => <Message key={message.id} message={message.message} />);
 
     return (
         <>
