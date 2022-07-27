@@ -1,4 +1,4 @@
-import { React } from 'react';
+import React from 'react';
 import s from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
@@ -7,7 +7,12 @@ import Message from './Message/Message';
 //BLL(Business Logic Layer)(DATA) -> redux
 const Dialogs = (props) => {
 
+    let newMessageElement = React.createRef();
 
+    let addMessage = () => {
+        let text = newMessageElement.current.value;
+        console.log(text);
+    };
 
     let DialogsElement = props.state.dialogs
         .map(dialog => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id} />);
@@ -25,6 +30,12 @@ const Dialogs = (props) => {
                 </div>
                 <div className={s.dialogs_message}>
                     {MessagesElement}
+                </div>
+            </div>
+            <div>
+                <div><textarea ref={newMessageElement}></textarea></div>
+                <div>
+                    <button onClick={addMessage}>create message</button>
                 </div>
             </div>
         </>
