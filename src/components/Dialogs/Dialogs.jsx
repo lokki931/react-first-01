@@ -12,6 +12,7 @@ const Dialogs = (props) => {
     let addMessage = () => {
         let text = newMessageElement.current.value;
         console.log(text);
+        newMessageElement.current.value = '';
     };
 
     let DialogsElement = props.state.dialogs

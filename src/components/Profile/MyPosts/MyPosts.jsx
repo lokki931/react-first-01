@@ -8,11 +8,13 @@ const MyPosts = (props) => {
 
     let addPost = () => {
         let text = newPostElement.current.value;
-        console.log(text);
+        props.addPost(text);
+
+        newPostElement.current.value = '';
     };
 
     let PostsElement = props.posts
-        .map(post => <Post key={post.id} title={post.title} like={post.like} />);
+        .map((post, index) => <Post key={post.id + index} title={post.title} like={post.like} />);
 
     return (
         <div>
