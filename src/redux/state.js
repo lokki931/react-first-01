@@ -28,7 +28,8 @@ let state = {
                 like: 2,
                 title: 'Haha'
             }
-        ]
+        ],
+        onPostValue: 'Add post name...'
     },
     dialogsPage: {
         dialogs: [
@@ -74,19 +75,44 @@ let state = {
                 id: 5,
                 message: 'Haha'
             }
-        ]
+        ],
+        onMessageValue: 'Add message..'
     }
 
 };
 
-export let addPost = (postMessage) => {
+window.state = state;
+
+export let addPost = () => {
     let newPost = {
         id: 6,
         like: 0,
-        title: postMessage
+        title: state.profilePage.onPostValue
     };
 
     state.profilePage.posts.push(newPost);
+    state.profilePage.onPostValue = '';
+    rerenderEntierTreee(state);
+};
+
+export let updateNewPostText = (newText) => {
+    state.profilePage.onPostValue = newText;
+    rerenderEntierTreee(state);
+};
+
+export let addMessage = () => {
+    let newMessage = {
+        id: 6,
+        message: state.dialogsPage.onMessageValue
+    };
+
+    state.dialogsPage.messages.push(newMessage);
+    state.dialogsPage.onMessageValue = '';
+    rerenderEntierTreee(state);
+};
+
+export let updateNewMessageText = (newText) => {
+    state.dialogsPage.onMessageValue = newText;
     rerenderEntierTreee(state);
 };
 

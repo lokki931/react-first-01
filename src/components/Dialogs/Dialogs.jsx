@@ -10,16 +10,18 @@ const Dialogs = (props) => {
     let newMessageElement = React.createRef();
 
     let addMessage = () => {
-        let text = newMessageElement.current.value;
-        console.log(text);
-        newMessageElement.current.value = '';
+        props.addMessage();
     };
+    let onChangeMessage = () => {
+        let text = newMessageElement.current.value;
+        props.updateNewMessageText(text);
+    }
 
     let DialogsElement = props.state.dialogs
         .map(dialog => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id} />);
 
     let MessagesElement = props.state.messages
-        .map(message => <Message key={message.id} message={message.message} />);
+        .map((message, index) => <Message key={message.id + index} message={message.message} />);
 
     return (
         <>
@@ -30,15 +32,22 @@ const Dialogs = (props) => {
                     </ul>
                 </div>
                 <div className={s.dialogs_message}>
-                    {MessagesElement}
+                    <div>{MessagesElement}</div>
+                    <div>
+                        <div>
+                            <textarea
+                                ref={newMessageElement}
+                                value={props.state.onMessageValue}
+                                onChange={onChangeMessage}
+                            />
+                        </div>
+                        <div>
+                            <button onClick={addMessage}>create message</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div>
-                <div><textarea ref={newMessageElement}></textarea></div>
-                <div>
-                    <button onClick={addMessage}>create message</button>
-                </div>
-            </div>
+
         </>
 
     );
