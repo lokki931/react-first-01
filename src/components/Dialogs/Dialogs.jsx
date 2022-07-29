@@ -8,13 +8,11 @@ import { AddMessageActionCreater, UpdateNewMessageTextActionCreater } from './..
 //BLL(Business Logic Layer)(DATA) -> redux
 const Dialogs = (props) => {
 
-    let newMessageElement = React.createRef();
-
     let addMessage = () => {
         props.dispatch(AddMessageActionCreater());
     };
-    let onChangeMessage = () => {
-        let text = newMessageElement.current.value;
+    let onChangeMessage = (e) => {
+        let text = e.target.value;
         props.dispatch(UpdateNewMessageTextActionCreater(text));
     }
 
@@ -37,7 +35,6 @@ const Dialogs = (props) => {
                     <div>
                         <div>
                             <textarea
-                                ref={newMessageElement}
                                 value={props.state.onMessageValue}
                                 onChange={onChangeMessage}
                             />
