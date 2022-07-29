@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
-import { AddMessageActionCreater, UpdateNewMessageTextActionCreater } from './../../redux/state';
+import { AddMessageActionCreater, UpdateNewMessageTextActionCreater } from './../../redux/dialogs-reducer';
 
 // UI(User Interface) -> react
 //BLL(Business Logic Layer)(DATA) -> redux
