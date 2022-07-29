@@ -2,24 +2,23 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
-import { AddMessageActionCreater, UpdateNewMessageTextActionCreater } from './../../redux/dialogs-reducer';
 
 // UI(User Interface) -> react
 //BLL(Business Logic Layer)(DATA) -> redux
 const Dialogs = (props) => {
 
-    let addMessage = () => {
-        props.dispatch(AddMessageActionCreater());
+    let onAddMessage = () => {
+        props.addMessage();
     };
     let onChangeMessage = (e) => {
         let text = e.target.value;
-        props.dispatch(UpdateNewMessageTextActionCreater(text));
+        props.changeMessage(text);
     }
 
-    let DialogsElement = props.state.dialogs
+    let DialogsElement = props.dialogs
         .map(dialog => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id} />);
 
-    let MessagesElement = props.state.messages
+    let MessagesElement = props.messages
         .map((message, index) => <Message key={message.id + index} message={message.message} />);
 
     return (
@@ -35,12 +34,12 @@ const Dialogs = (props) => {
                     <div>
                         <div>
                             <textarea
-                                value={props.state.onMessageValue}
+                                value={props.onMessageValue}
                                 onChange={onChangeMessage}
                             />
                         </div>
                         <div>
-                            <button onClick={addMessage}>create message</button>
+                            <button onClick={onAddMessage}>create message</button>
                         </div>
                     </div>
                 </div>
