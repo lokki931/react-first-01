@@ -6,7 +6,7 @@ import Message from './Message/Message';
 // UI(User Interface) -> react
 //BLL(Business Logic Layer)(DATA) -> redux
 const Dialogs = (props) => {
-
+    let state = props.dialogsPage;
     let onAddMessage = () => {
         props.addMessage();
     };
@@ -15,10 +15,10 @@ const Dialogs = (props) => {
         props.changeMessage(text);
     }
 
-    let DialogsElement = props.dialogs
+    let DialogsElement = state.dialogs
         .map(dialog => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id} />);
 
-    let MessagesElement = props.messages
+    let MessagesElement = state.messages
         .map((message, index) => <Message key={message.id + index} message={message.message} />);
 
     return (
@@ -34,7 +34,7 @@ const Dialogs = (props) => {
                     <div>
                         <div>
                             <textarea
-                                value={props.onMessageValue}
+                                value={state.onMessageValue}
                                 onChange={onChangeMessage}
                             />
                         </div>
