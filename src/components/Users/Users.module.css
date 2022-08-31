@@ -1,3 +1,19 @@
-.active {
+.pagination {
+    display: flex;
+    align-items: center;
+    max-width: 650px;
+    overflow-x: auto;
+    margin: 0 auto 20px;
+
+}
+
+.pagination span {
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.pagination span.active {
     font-weight: bold;
+    cursor: text;
 }

@@ -10,14 +10,36 @@ const UsersList = (props) => {
     }
     return (
         <>
-            <div className={classes.pagination}>
-                {pages.map(p => {
-                    return <span key={p}
-                        className={props.currentPage === p ? `${classes.active}` : ''}
-                        onClick={() => (props.onPageChanged(p))}
-                    >{p}</span>
-                })}
-            </div>
+            {props.users.length !== 0 ?
+                <div className={classes.pagination}>
+
+                    <span>
+                        <button
+                            onClick={props.prevHandlerBtn}
+                            disabled={props.currentPage === pages[0] ? true : false}
+                        >Prev</button>
+                    </span>
+                    {pages.map(p => {
+                        if (p < props.maxPageNumberLimit + 1 && p > props.minPageNumberLimit) {
+                            return (
+                                <span key={p}
+                                    className={props.currentPage === p ? `${classes.active}` : ''}
+                                    onClick={() => (props.onPageChanged(p))}
+                                >{p}</span>
+                            )
+                        } else {
+                            return null
+                        }
+                    })}
+                    <span>
+                        <button
+                            onClick={props.nextHandlerBtn}
+                            disabled={props.currentPage === pages[pages.length - 1] ? true : false}
+                        >Next</button>
+                    </span>
+                </div>
+                : null
+            }
             {
                 props.users.map((user, index) => <div key={user.id.toString() + index} style={{ display: 'flex' }}>
                     <span>

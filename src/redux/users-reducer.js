@@ -3,6 +3,8 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
+const SET_MAX_PAGE_NUMBER = 'SET-MAX-PAGE-NUMBER';
+const SET_MIN_PAGE_NUMBER = 'SET-MIN-PAGE-NUMBER';
 
 let initialState = {
     users: [
@@ -53,7 +55,10 @@ let initialState = {
     ],
     pageSize: 20,
     totalUsersCount: 0,
-    currentPage: 1
+    currentPage: 1,
+    pageNumberLimit: 5,
+    maxPageNumberLimit: 5,
+    minPageNumberLimit: 0
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -96,6 +101,16 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 totalUsersCount: action.totalCount
             }
+        case SET_MAX_PAGE_NUMBER:
+            return {
+                ...state,
+                maxPageNumberLimit: action.maxPageNumberLimit
+            }
+        case SET_MIN_PAGE_NUMBER:
+            return {
+                ...state,
+                minPageNumberLimit: action.minPageNumberLimit
+            }
 
         default:
             return state;
@@ -110,7 +125,12 @@ export const unFollowAC = (userId) => ({ type: UNFOLLOW, userId });
 export const setUsersAC = (users) => ({ type: SET_USERS, users });
 
 export const setCurrentPageAC = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
+
 export const setTotalUsersCountAC = (totalCount) => ({ type: SET_TOTAL_USERS_COUNT, totalCount });
+
+export const setMaxPageNumberAC = (maxPageNumberLimit) => ({ type: SET_MAX_PAGE_NUMBER, maxPageNumberLimit });
+
+export const setMinPageNumberAC = (minPageNumberLimit) => ({ type: SET_MIN_PAGE_NUMBER, minPageNumberLimit });
 
 export default usersReducer;
 
