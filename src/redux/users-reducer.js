@@ -125,20 +125,20 @@ const usersReducer = (state = initialState, action) => {
 
 }
 
-export const followAC = (userId) => ({ type: FOLLOW, userId });
+export const follow = (userId) => ({ type: FOLLOW, userId });
 
-export const unFollowAC = (userId) => ({ type: UNFOLLOW, userId });
+export const unfollow = (userId) => ({ type: UNFOLLOW, userId });
 
-export const setUsersAC = (users) => ({ type: SET_USERS, users });
+export const setUsers = (users) => ({ type: SET_USERS, users });
 
-export const setCurrentPageAC = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
+export const setCurentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
 
-export const setTotalUsersCountAC = (totalCount) => ({ type: SET_TOTAL_USERS_COUNT, totalCount });
+export const setTotalUsersCount = (totalCount) => ({ type: SET_TOTAL_USERS_COUNT, totalCount });
 
-export const setMaxPageNumberAC = (maxPageNumberLimit) => ({ type: SET_MAX_PAGE_NUMBER, maxPageNumberLimit });
+export const setMaxPageNumber = (maxPageNumberLimit) => ({ type: SET_MAX_PAGE_NUMBER, maxPageNumberLimit });
 
-export const setMinPageNumberAC = (minPageNumberLimit) => ({ type: SET_MIN_PAGE_NUMBER, minPageNumberLimit });
-export const toggleIsFetchingAC = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
+export const setMinPageNumber = (minPageNumberLimit) => ({ type: SET_MIN_PAGE_NUMBER, minPageNumberLimit });
+export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 
 export default usersReducer;
 

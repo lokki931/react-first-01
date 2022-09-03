@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from 'react-redux';
 import axios from 'axios';
 import Users from './Users';
-import { followAC, unFollowAC, setUsersAC, setCurrentPageAC, setTotalUsersCountAC, setMinPageNumberAC, setMaxPageNumberAC, toggleIsFetchingAC } from './../../redux/users-reducer';
+import { follow, unfollow, setUsers, setCurentPage, setTotalUsersCount, setMinPageNumber, setMaxPageNumber, toggleIsFetching } from './../../redux/users-reducer';
 import Preloader from "../common/Preloader/Preloader";
 
 
@@ -72,8 +72,6 @@ class UsersContainer extends React.Component {
                     minPageNumberLimit={this.props.minPageNumberLimit}
                     prevHandlerBtn={this.prevHandlerBtn}
                     nextHandlerBtn={this.nextHandlerBtn}
-
-
                 />
             </>
         </>
@@ -93,34 +91,46 @@ const mapStateToProps = state => {
         isFetching: state.usersPage.isFetching
     }
 }
-const mapDispatchToProps = dispatch => {
-    return {
-        follow: (userId) => {
-            dispatch(followAC(userId))
-        },
-        unfollow: (userId) => {
-            dispatch(unFollowAC(userId))
-        },
-        setUsers: (users) => {
-            dispatch(setUsersAC(users))
-        },
-        setCurentPage: (currentPage) => {
-            dispatch(setCurrentPageAC(currentPage))
-        },
-        setTotalUsersCount: (totalCount) => {
-            dispatch(setTotalUsersCountAC(totalCount))
-        },
-        setMaxPageNumber: (maxPageNumberLimit) => {
-            dispatch(setMaxPageNumberAC(maxPageNumberLimit))
-        },
-        setMinPageNumber: (minPageNumberLimit) => {
-            dispatch(setMinPageNumberAC(minPageNumberLimit))
-        },
-        toggleIsFetching: (isFetching) => {
-            dispatch(toggleIsFetchingAC(isFetching))
-        }
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         follow: (userId) => {
+//             dispatch(followAC(userId))
+//         },
+//         unfollow: (userId) => {
+//             dispatch(unFollowAC(userId))
+//         },
+//         setUsers: (users) => {
+//             dispatch(setUsersAC(users))
+//         },
+//         setCurentPage: (currentPage) => {
+//             dispatch(setCurrentPageAC(currentPage))
+//         },
+//         setTotalUsersCount: (totalCount) => {
+//             dispatch(setTotalUsersCountAC(totalCount))
+//         },
+//         setMaxPageNumber: (maxPageNumberLimit) => {
+//             dispatch(setMaxPageNumberAC(maxPageNumberLimit))
+//         },
+//         setMinPageNumber: (minPageNumberLimit) => {
+//             dispatch(setMinPageNumberAC(minPageNumberLimit))
+//         },
+//         toggleIsFetching: (isFetching) => {
+//             dispatch(toggleIsFetchingAC(isFetching))
+//         }
 
+//     }
+// }
+
+export default connect(
+    mapStateToProps,
+    {
+        follow,
+        unfollow,
+        setUsers,
+        setCurentPage,
+        setTotalUsersCount,
+        setMaxPageNumber,
+        setMinPageNumber,
+        toggleIsFetching
     }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+)(UsersContainer);
