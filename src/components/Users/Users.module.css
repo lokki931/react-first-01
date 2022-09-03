@@ -1,9 +1,7 @@
 .pagination {
     display: flex;
     align-items: center;
-    max-width: 650px;
-    overflow-x: auto;
-    margin: 0 auto 20px;
+    justify-content: center;
 
 }
 
@@ -16,4 +14,9 @@
 .pagination span.active {
     font-weight: bold;
     cursor: text;
+}
+
+.pagination span button {
+    border: none;
+    cursor: pointer;
 }

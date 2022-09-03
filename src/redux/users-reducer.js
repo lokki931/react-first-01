@@ -5,6 +5,7 @@ const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
 const SET_MAX_PAGE_NUMBER = 'SET-MAX-PAGE-NUMBER';
 const SET_MIN_PAGE_NUMBER = 'SET-MIN-PAGE-NUMBER';
+const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
 
 let initialState = {
     users: [
@@ -56,9 +57,10 @@ let initialState = {
     pageSize: 20,
     totalUsersCount: 0,
     currentPage: 1,
-    pageNumberLimit: 5,
-    maxPageNumberLimit: 5,
-    minPageNumberLimit: 0
+    pageNumberLimit: 8,
+    maxPageNumberLimit: 8,
+    minPageNumberLimit: 0,
+    isFetching: false
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -111,6 +113,11 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 minPageNumberLimit: action.minPageNumberLimit
             }
+        case TOGGLE_IS_FETCHING:
+            return {
+                ...state,
+                isFetching: action.isFetching
+            }
 
         default:
             return state;
@@ -131,6 +138,7 @@ export const setTotalUsersCountAC = (totalCount) => ({ type: SET_TOTAL_USERS_COU
 export const setMaxPageNumberAC = (maxPageNumberLimit) => ({ type: SET_MAX_PAGE_NUMBER, maxPageNumberLimit });
 
 export const setMinPageNumberAC = (minPageNumberLimit) => ({ type: SET_MIN_PAGE_NUMBER, minPageNumberLimit });
+export const toggleIsFetchingAC = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 
 export default usersReducer;
 
