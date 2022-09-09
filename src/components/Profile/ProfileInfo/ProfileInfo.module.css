@@ -3,3 +3,11 @@
     width: 100%;
     height: 250px;
 }
+
+.img_info {
+    display: flex;
+}
+
+.info {
+    margin-left: 10px;
+}
