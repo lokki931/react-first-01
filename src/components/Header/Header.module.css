@@ -1,9 +1,19 @@
-.header{
-    grid-area: h;
-    background-color: green;
-    
-  }
-  .header img{
-    display: block;
-    margin: 10px;
-  }
+.header {
+  grid-area: h;
+  background-color: green;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header img {
+  display: block;
+  margin: 10px;
+}
+.login {
+  margin-right: 10px;
+  color: #fff;
+}
+.login a {
+  color: #fff;
+  text-decoration: none;
+}
