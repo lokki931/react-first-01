@@ -4,42 +4,25 @@ import Users from './Users';
 import {
   follow,
   unfollow,
-  setUsers,
+  getUsers,
   setCurentPage,
   setTotalUsersCount,
   setMinPageNumber,
   setMaxPageNumber,
-  toggleIsFetching,
-  toggleFollowingProgress,
 } from './../../redux/users-reducer';
 import Preloader from '../common/Preloader/Preloader';
-import { usersAPI } from '../../api/api';
 
 class UsersContainer extends React.Component {
   componentDidMount() {
-    this.props.toggleIsFetching(true);
-    usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then((data) => {
-      this.props.toggleIsFetching(false);
-      this.props.setUsers(data.items);
-      this.props.setTotalUsersCount(data.totalCount);
-    });
+    this.props.getUsers(this.props.currentPage, this.props.pageSize);
   }
   onPageChanged = (pageNum) => {
     this.props.setCurentPage(pageNum);
-    this.props.toggleIsFetching(true);
-    usersAPI.getUsers(pageNum, this.props.pageSize).then((data) => {
-      this.props.toggleIsFetching(false);
-      this.props.setUsers(data.items);
-    });
+    this.props.getUsers(pageNum, this.props.pageSize);
   };
   nextHandlerBtn = () => {
     this.props.setCurentPage(this.props.currentPage + 1);
-    this.props.toggleIsFetching(true);
-
-    usersAPI.getUsers(this.props.currentPage + 1, this.props.pageSize).then((data) => {
-      this.props.toggleIsFetching(false);
-      this.props.setUsers(data.items);
-    });
+    this.props.getUsers(this.props.currentPage + 1, this.props.pageSize);
 
     if (this.props.currentPage + 1 > this.props.maxPageNumberLimit) {
       this.props.setMaxPageNumber(this.props.maxPageNumberLimit + this.props.pageNumberLimit);
@@ -49,11 +32,7 @@ class UsersContainer extends React.Component {
 
   prevHandlerBtn = () => {
     this.props.setCurentPage(this.props.currentPage - 1);
-    this.props.toggleIsFetching(true);
-    usersAPI.getUsers(this.props.currentPage - 1, this.props.pageSize).then((data) => {
-      this.props.toggleIsFetching(false);
-      this.props.setUsers(data.items);
-    });
+    this.props.getUsers(this.props.currentPage - 1, this.props.pageSize);
 
     if ((this.props.currentPage - 1) % this.props.pageNumberLimit === 0) {
       this.props.setMaxPageNumber(this.props.maxPageNumberLimit - this.props.pageNumberLimit);
@@ -77,7 +56,6 @@ class UsersContainer extends React.Component {
             minPageNumberLimit={this.props.minPageNumberLimit}
             prevHandlerBtn={this.prevHandlerBtn}
             nextHandlerBtn={this.nextHandlerBtn}
-            toggleFollowingProgress={this.props.toggleFollowingProgress}
             followingInProgress={this.props.followingInProgress}
           />
         </>
@@ -103,11 +81,9 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   follow,
   unfollow,
-  setUsers,
+  getUsers,
   setCurentPage,
   setTotalUsersCount,
   setMaxPageNumber,
   setMinPageNumber,
-  toggleIsFetching,
-  toggleFollowingProgress,
 })(UsersContainer);

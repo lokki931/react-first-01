@@ -14,4 +14,10 @@ export const usersAPI = {
       .get(`users?page=${currentPage}&count=${pageSize}`)
       .then((res) => res.data);
   },
+  async follow(userId) {
+    return await instance.post(`follow/${userId}`).then((res) => res.data);
+  },
+  async unfollow(userId) {
+    return await instance.delete(`follow/${userId}`).then((res) => res.data);
+  },
 };
