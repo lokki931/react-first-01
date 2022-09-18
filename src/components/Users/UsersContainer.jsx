@@ -10,6 +10,7 @@ import {
   setMinPageNumber,
   setMaxPageNumber,
   toggleIsFetching,
+  toggleFollowingProgress,
 } from './../../redux/users-reducer';
 import Preloader from '../common/Preloader/Preloader';
 import { usersAPI } from '../../api/api';
@@ -76,6 +77,8 @@ class UsersContainer extends React.Component {
             minPageNumberLimit={this.props.minPageNumberLimit}
             prevHandlerBtn={this.prevHandlerBtn}
             nextHandlerBtn={this.nextHandlerBtn}
+            toggleFollowingProgress={this.props.toggleFollowingProgress}
+            followingInProgress={this.props.followingInProgress}
           />
         </>
       </>
@@ -93,37 +96,9 @@ const mapStateToProps = (state) => {
     maxPageNumberLimit: state.usersPage.maxPageNumberLimit,
     minPageNumberLimit: state.usersPage.minPageNumberLimit,
     isFetching: state.usersPage.isFetching,
+    followingInProgress: state.usersPage.followingInProgress,
   };
 };
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         follow: (userId) => {
-//             dispatch(followAC(userId))
-//         },
-//         unfollow: (userId) => {
-//             dispatch(unFollowAC(userId))
-//         },
-//         setUsers: (users) => {
-//             dispatch(setUsersAC(users))
-//         },
-//         setCurentPage: (currentPage) => {
-//             dispatch(setCurrentPageAC(currentPage))
-//         },
-//         setTotalUsersCount: (totalCount) => {
-//             dispatch(setTotalUsersCountAC(totalCount))
-//         },
-//         setMaxPageNumber: (maxPageNumberLimit) => {
-//             dispatch(setMaxPageNumberAC(maxPageNumberLimit))
-//         },
-//         setMinPageNumber: (minPageNumberLimit) => {
-//             dispatch(setMinPageNumberAC(minPageNumberLimit))
-//         },
-//         toggleIsFetching: (isFetching) => {
-//             dispatch(toggleIsFetchingAC(isFetching))
-//         }
-
-//     }
-// }
 
 export default connect(mapStateToProps, {
   follow,
@@ -134,4 +109,5 @@ export default connect(mapStateToProps, {
   setMaxPageNumber,
   setMinPageNumber,
   toggleIsFetching,
+  toggleFollowingProgress,
 })(UsersContainer);
