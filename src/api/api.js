@@ -20,4 +20,13 @@ export const usersAPI = {
   async unfollow(userId) {
     return await instance.delete(`follow/${userId}`).then((res) => res.data);
   },
+  async getProfile(userId) {
+    return await instance.get(`profile/${userId}`).then((res) => res.data);
+  },
+};
+
+export const authAPI = {
+  async me() {
+    return await instance.get(`auth/me`).then((res) => res.data);
+  },
 };
