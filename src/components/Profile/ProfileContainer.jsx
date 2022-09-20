@@ -37,9 +37,9 @@ function withRouter(Component) {
 }
 
 export default compose(
-  whithAuthRedirect,
-  withRouter,
   connect(mapStateToProps, {
     getProfile,
   }),
+  withRouter,
+  whithAuthRedirect,
 )(ProfileContainer);

@@ -25,8 +25,4 @@ let mapDispatchToProps = (dispatch) => {
   };
 };
 
-// let AuthRedirectComponent = whithAuthRedirect(Dialogs);
-
-// const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent);
-
 export default compose(whithAuthRedirect, connect(mapStateToProps, mapDispatchToProps))(Dialogs);
