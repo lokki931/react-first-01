@@ -5,11 +5,12 @@ import {
 import Dialogs from './Dialogs';
 
 import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { whithAuthRedirect } from '../../hoc/whithAuthRedirect';
 
 let mapStateToProps = (state) => {
   return {
     dialogsPage: state.dialogsPage,
-    isAuth: state.auth.isAuth,
   };
 };
 
@@ -24,6 +25,8 @@ let mapDispatchToProps = (dispatch) => {
   };
 };
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
+// let AuthRedirectComponent = whithAuthRedirect(Dialogs);
 
-export default DialogsContainer;
+// const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent);
+
+export default compose(whithAuthRedirect, connect(mapStateToProps, mapDispatchToProps))(Dialogs);

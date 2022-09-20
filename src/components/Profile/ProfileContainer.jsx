@@ -3,7 +3,9 @@ import Profile from './Profile';
 import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
 // import s from './Profile.module.css';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { getProfile } from './../../redux/profile-reducer';
+import { whithAuthRedirect } from '../../hoc/whithAuthRedirect';
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
@@ -21,7 +23,6 @@ class ProfileContainer extends React.Component {
 const mapStateToProps = (state) => {
   return {
     profile: state.profilePage.profile,
-    isAuth: state.auth.isAuth,
   };
 };
 function withRouter(Component) {
@@ -35,8 +36,10 @@ function withRouter(Component) {
   return ComponentWithRouterProp;
 }
 
-const ComponentWhithRouter = withRouter(ProfileContainer);
-
-export default connect(mapStateToProps, {
-  getProfile,
-})(ComponentWhithRouter);
+export default compose(
+  whithAuthRedirect,
+  withRouter,
+  connect(mapStateToProps, {
+    getProfile,
+  }),
+)(ProfileContainer);

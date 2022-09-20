@@ -2,7 +2,6 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
-import { Navigate } from 'react-router-dom';
 
 // UI(User Interface) -> react
 //BLL(Business Logic Layer)(DATA) -> redux
@@ -23,7 +22,6 @@ const Dialogs = (props) => {
   let MessagesElement = state.messages.map((message, index) => (
     <Message key={message.id + index} message={message.message} />
   ));
-  if (!props.isAuth) return <Navigate to="/login" />;
   return (
     <>
       <div className={s.dialogs_wrap}>
