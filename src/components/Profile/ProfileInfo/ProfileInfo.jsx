@@ -2,6 +2,7 @@ import React from 'react';
 import Preloader from '../../common/Preloader/Preloader';
 import s from './ProfileInfo.module.css';
 import ava from '../../../assets/images/ava.png';
+import Status from './Status';
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -10,9 +11,6 @@ const ProfileInfo = (props) => {
   const { photos, fullName, aboutMe } = props.profile;
   return (
     <>
-      <div className={s.main_img}>
-        <img src="https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg" alt="main img" />
-      </div>
       <div className={s.img_info}>
         <img src={photos.large ? photos.large : ava} alt={fullName} />
         <div className={s.info}>
@@ -20,6 +18,7 @@ const ProfileInfo = (props) => {
           <p>{aboutMe}</p>
         </div>
       </div>
+      <Status status="Hello Everybody" />
     </>
   );
 };
