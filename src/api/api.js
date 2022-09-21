@@ -20,8 +20,19 @@ export const usersAPI = {
   async unfollow(userId) {
     return await instance.delete(`follow/${userId}`).then((res) => res.data);
   },
+  getProfile(userId) {
+    return profileAPI.getProfile(userId);
+  },
+};
+export const profileAPI = {
   async getProfile(userId) {
     return await instance.get(`profile/${userId}`).then((res) => res.data);
+  },
+  async getStatus(userId) {
+    return await instance.get(`profile/status/${userId}`).then((res) => res.data);
+  },
+  async updateStatus(status) {
+    return await instance.put(`profile/status`, { status }).then((res) => res.data);
   },
 };
 
