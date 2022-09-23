@@ -10,14 +10,9 @@ const Textarea = Element('textarea');
 const maxLength = maxLengthCreator(30);
 
 let MessageForm = (props) => {
-  const { handleSubmit, reset } = props;
-  const sendForm = (e) => {
-    e.preventDefault();
-    handleSubmit();
-    reset();
-  };
+  const { handleSubmit } = props;
   return (
-    <form onSubmit={sendForm}>
+    <form onSubmit={handleSubmit}>
       <div>
         <Field
           name="newMessage"
