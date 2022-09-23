@@ -38,6 +38,7 @@ const Dialogs = (props) => {
 
   let onAddMessage = (values) => {
     props.addMessage(values.newMessage);
+    values.newMessage = '';
   };
 
   let DialogsElement = state.dialogs.map((dialog) => (

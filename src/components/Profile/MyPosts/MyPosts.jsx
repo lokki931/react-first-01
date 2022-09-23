@@ -36,6 +36,7 @@ const MyPosts = (props) => {
 
   let onAddPost = (values) => {
     props.addPost(values.newPost);
+    values.newPost = '';
   };
 
   let PostsElement = state.posts.map((post, index) => (
