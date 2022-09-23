@@ -40,6 +40,9 @@ LoginForm = reduxForm({
 const Login = () => {
   let submit = (values) => {
     console.log(values);
+    values.login = '';
+    values.password = '';
+    values.rememberMe = false;
   };
   return (
     <div>
