@@ -40,4 +40,12 @@ export const authAPI = {
   async me() {
     return await instance.get(`auth/me`).then((res) => res.data);
   },
+  async login(email, password, rememberMe = false) {
+    return await instance
+      .post(`auth/login`, { email, password, rememberMe })
+      .then((res) => res.data);
+  },
+  async logout() {
+    return await instance.delete(`auth/login`).then((res) => res.data);
+  },
 };
