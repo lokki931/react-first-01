@@ -32,6 +32,11 @@ let LoginForm = (props) => {
         <Field name="rememberMe" component={'input'} type="checkbox" />
         <label htmlFor="rememberMe">remember</label>
       </div>
+      {props.error && (
+        <div>
+          <span style={{ color: 'red' }}>{props.error}</span>
+        </div>
+      )}
       <button type="submit">Submit</button>
     </form>
   );
@@ -42,7 +47,6 @@ LoginForm = reduxForm({
 
 const Login = (props) => {
   let submit = (values) => {
-    console.log(values);
     props.login(values.email, values.password, values.rememberMe);
     // values.email = '';
     // values.password = '';
