@@ -7,7 +7,7 @@ import { getProfile, getStatus, updateStatus } from './../../redux/profile-reduc
 import { withRouter } from './../../hoc/whithRouter';
 
 class ProfileContainer extends React.Component {
-  componentDidMount() {
+  refreshProfile() {
     let userId = this.props.router.params.userId;
     //|| 25928
     if (!userId) {
@@ -16,8 +16,18 @@ class ProfileContainer extends React.Component {
         return setTimeout(() => this.props.router.navigate('/login', { replace: true }));
       }
     }
-    this.props.getProfile(userId);
-    this.props.getStatus(userId);
+    if (userId) {
+      this.props.getProfile(userId);
+      this.props.getStatus(userId);
+    }
+  }
+  componentDidMount() {
+    this.refreshProfile();
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.router.params.userId != prevProps.router.params.userId) {
+      this.refreshProfile();
+    }
   }
   render() {
     return (
