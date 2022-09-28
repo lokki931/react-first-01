@@ -8,7 +8,14 @@ import { withRouter } from './../../hoc/whithRouter';
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    let userId = this.props.router.params.userId || 25928;
+    let userId = this.props.router.params.userId;
+    //|| 25928
+    if (!userId) {
+      userId = this.props.authUserId;
+      if (!userId) {
+        return setTimeout(() => this.props.router.navigate('/login', { replace: true }));
+      }
+    }
     this.props.getProfile(userId);
     this.props.getStatus(userId);
   }
