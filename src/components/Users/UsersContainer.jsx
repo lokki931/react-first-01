@@ -11,6 +11,13 @@ import {
   setMaxPageNumber,
 } from './../../redux/users-reducer';
 import Preloader from '../common/Preloader/Preloader';
+import {
+  pageSize,
+  userFilter,
+  totalUsersCount,
+  currentPage,
+  isFetching,
+} from './../../redux/user-selects';
 
 class UsersContainer extends React.Component {
   componentDidMount() {
@@ -66,14 +73,14 @@ class UsersContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    users: state.usersPage.users,
-    pageSize: state.usersPage.pageSize,
-    totalUsersCount: state.usersPage.totalUsersCount,
-    currentPage: state.usersPage.currentPage,
+    users: userFilter(state),
+    pageSize: pageSize(state),
+    totalUsersCount: totalUsersCount(state),
+    currentPage: currentPage(state),
     pageNumberLimit: state.usersPage.pageNumberLimit,
     maxPageNumberLimit: state.usersPage.maxPageNumberLimit,
     minPageNumberLimit: state.usersPage.minPageNumberLimit,
-    isFetching: state.usersPage.isFetching,
+    isFetching: isFetching(state),
     followingInProgress: state.usersPage.followingInProgress,
   };
 };
