@@ -2,7 +2,8 @@ import React from 'react';
 import Preloader from '../../common/Preloader/Preloader';
 import s from './ProfileInfo.module.css';
 import ava from '../../../assets/images/ava.png';
-import Status from './Status';
+//import Status from './Status';
+import StatusWhithHook from './StatusWhothHook';
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -18,7 +19,7 @@ const ProfileInfo = (props) => {
           <p>{aboutMe}</p>
         </div>
       </div>
-      <Status status={props.status} updateStatus={props.updateStatus} />
+      <StatusWhithHook status={props.status} updateStatus={props.updateStatus} />
     </>
   );
 };
