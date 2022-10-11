@@ -52,4 +52,4 @@ const MyPosts = (props) => {
   );
 };
 
-export default MyPosts;
+export default React.memo(MyPosts);
