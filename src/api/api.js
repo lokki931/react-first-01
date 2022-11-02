@@ -34,6 +34,18 @@ export const profileAPI = {
   async updateStatus(status) {
     return await instance.put(`profile/status`, { status }).then((res) => res.data);
   },
+  async savePhoto(photoFile) {
+    const formData = new FormData();
+    formData.append('image', photoFile);
+
+    return await instance
+      .put(`profile/photo`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+      .then((res) => res.data);
+  },
 };
 
 export const authAPI = {
